@@ -20,19 +20,19 @@
 
 #pragma once
 
-#include "HAL_platform.h"
+#define OVERSAMPLE 3
+#define INTERRUPT_PRIORITY 0
 
-#if HAL_SS_PLATFORM == HAL_PLATFORM_STM32F1
-  #include "HAL_softserial_STM32F1.h"
-#elif HAL_SS_PLATFORM == HAL_PLATFORM_STM32
-  #include "HAL_softserial_STM32.h"
-#elif HAL_SS_PLATFORM == HAL_PLATFORM_SAMD51
-  #include "HAL_softserial_SAMD51.h"
-#elif HAL_SS_PLATFORM == HAL_PLATFORM_RP2040
-  #include "HAL_softserial_RP2040.h"
-#else
-  #error "Unsupported Platform!"
-#endif
+#define gpio_set(IO,V)  digitalWrite(IO, V)
+#define gpio_get(IO)    digitalRead(IO)
 
-void HAL_softSerial_init();
-void HAL_softserial_setSpeed(uint32_t speed);
+#define cli() __disable_irq()
+#define sei() __enable_irq()
+
+#define HAL_softserial_timer_isr_prologue()
+#define HAL_softserial_timer_isr_epilogue()
+
+#define HAL_SOFTSERIAL_TIMER_ISR() extern "C" void SoftSerial_Handler()
+
+extern "C" void SoftSerial_Handler();
+

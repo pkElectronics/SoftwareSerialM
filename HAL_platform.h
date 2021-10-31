@@ -31,6 +31,7 @@
 #define HAL_PLATFORM_ESP32        8
 #define HAL_PLATFORM_LINUX        9
 #define HAL_PLATFORM_SAMD51      10
+#define HAL_PLATFORM_RP2040      11
 
 #ifndef HAL_SS_PLATFORM
   #ifdef __AVR__
@@ -55,6 +56,8 @@
     #define HAL_SS_PLATFORM HAL_PLATFORM_LINUX
   #elif defined(__SAMD51__)
     #define HAL_SS_PLATFORM HAL_PLATFORM_SAMD51
+  #elif defined(__PLAT_RP2040)
+    #define HAL_SS_PLATFORM HAL_PLATFORM_RP2040
   #else
     #error "Unsupported Platform!"
   #endif
