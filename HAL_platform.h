@@ -56,7 +56,7 @@
     #define HAL_SS_PLATFORM HAL_PLATFORM_LINUX
   #elif defined(__SAMD51__)
     #define HAL_SS_PLATFORM HAL_PLATFORM_SAMD51
-  #elif defined(__PLAT_RP2040)
+  #elif defined(__PLAT_RP2040__)
     #define HAL_SS_PLATFORM HAL_PLATFORM_RP2040
   #else
     #error "Unsupported Platform!"
